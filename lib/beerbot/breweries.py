@@ -8,27 +8,9 @@ import re
 import time
 
 
-@respond_to('test', re.IGNORECASE)
-def test(message):
-
-    try:
-        cb = CB()
-        cb.create_connection()
-
-        message.reply('I can connect to Couchbase!')
-        # react with thumbs up emoji
-        message.react('+1')
-    except CB_Connection_Exception:
-        message.reply('I cannot connect to Couchbase')
-        # react with thumbs down emoji
-        message.react('-1')
-    except:
-        raise
-
-
 @respond_to('Find breweries in (.*)', re.IGNORECASE)
 def find_breweries_in(message, location):
-    """ Finds breweries in a specific location """
+    """ Finds breweries in a specific location - searches city and state """
 
     cb = CB()
 
@@ -49,7 +31,7 @@ def find_breweries_in(message, location):
 
 @respond_to('Find breweries with (.*)', re.IGNORECASE)
 def find_breweries(message, terms):
-    """ Finds breweries with terms in their description and name """
+    """ Finds breweries based on their description and name """
 
     cb = CB()
 
@@ -81,7 +63,7 @@ def find_breweries(message, terms):
 
 @respond_to('Find breweries called (.*)', re.IGNORECASE)
 def find_breweries_called(message, terms):
-    """ Finds breweries with terms in their description and name """
+    """ Finds breweries by their name """
 
     cb = CB()
 
