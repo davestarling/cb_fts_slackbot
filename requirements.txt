@@ -1,0 +1,12 @@
+appdirs==1.4.3
+couchbase==2.2.2
+docutils==0.13.1
+lockfile==0.12.2
+packaging==16.8
+pyparsing==2.2.0
+python-daemon==2.1.2
+requests==2.13.0
+six==1.10.0
+slackbot==0.4.1
+slacker==0.9.42
+websocket-client==0.40.0
