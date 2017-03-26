@@ -1,8 +1,7 @@
 from slackbot.bot import respond_to
 from slackbot.bot import listen_to
-from lib.couchbase.cb import CB, CB_Connection_Exception
-from couchbase.fulltext import MatchQuery, MatchPhraseQuery, TermQuery, \
-    DisjunctionQuery, BooleanQuery, PrefixQuery, TermFacet
+from lib.couchbase.cb import CB
+from couchbase.fulltext import MatchQuery, MatchPhraseQuery, DisjunctionQuery
 import json
 import re
 import time
@@ -105,16 +104,18 @@ def format_brewery_results(results, term):
         "author_name": "BeerBot",
         "title": "There are {length} brewery results for {term}".format(length=results['total_hits'],
                                                                         term=term),
-        "text": "Here are the first {row_count}".format(row_count=len(results['rows'])),
         "footer": "BeerBot",
         "ts": time.time()
     }]
 
-    for key, row in results['rows'].iteritems():
-        out.append({
-            "color": "#36a64f",
-            "title": row['doc'].get("name"),
-            "text": row['doc'].get("description")
-        })
+    if results['rows'] > 0:
+        out[0]['text'] = "Here are the first {row_count}:".format(row_count=len(results['rows']))
 
-    return out
+        for key, row in results['rows'].iteritems():
+            out.append({
+                "color": "#36a64f",
+                "title": row['doc'].get("name"),
+                "text": row['doc'].get("description")
+            })
+
+        return out
