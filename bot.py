@@ -25,9 +25,13 @@ if __name__ == "__main__":
     ]
 
     parser = argparse.ArgumentParser(description="Runs the Couchbase FTS Slackbot")
-    parser.add_argument("-e", "--environment", help="The environment in which the slackbot is run (" + ', '.join(environments) + ")")
-    parser.add_argument("-s", "--slackapikey", help="The Slack API key")
-    parser.add_argument("-p", "--pidfile", help="PID file for daemonisation")
+
+    parser.add_argument("-e", "--environment",
+                        help="The environment in which the Slackbot is run (" + ', '.join(environments) + ")")
+    parser.add_argument("-s", "--slackapikey",
+                        help="The Slack API key")
+    parser.add_argument("-p", "--pidfile",
+                        help="PID file for daemonisation")
 
     args = parser.parse_args()
 
