@@ -35,8 +35,6 @@ if __name__ == "__main__":
     if args.environment not in environments:
         exit('Environment is mandatory, and must be one of: ' + ', '.join(environments))
 
-    # validate num workers (< cpu count)
-
     lib.config_path = os.path.dirname(os.path.realpath(__file__)) + "/conf/" + args.environment + ".cfg"
     lib.options = Options(lib.config_path, args.environment)
 
