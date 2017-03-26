@@ -7,7 +7,6 @@ import os
 DEBUG = lib.options.get('slackbot', 'debug')
 
 PLUGINS = [
-    'slackbot.plugins',
     'lib.beerbot'
 ]
 
