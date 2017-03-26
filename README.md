@@ -10,4 +10,6 @@ then run:
 
     ./bot.py -e development -s "{your Slack Bot User's API token}"
 
-You will also need to create the FTS indexes in Couchbase using the JSON definitions in fts_indexes
+You will also need to create the FTS indexes in Couchbase using the JSON definitions in `fts_indexes`
+
+[Beer Bot Demo][http://d10g.io/wp-content/uploads/2017/03/beerbot.gif]
